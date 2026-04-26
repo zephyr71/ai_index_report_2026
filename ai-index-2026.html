@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Index Report 2026 | 광운대학교 한국어 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --kw-red: #C8102E;
+  --kw-red-dark: #9B0C22;
+  --kw-red-light: #E8374F;
+  --kw-red-faint: #FFF0F2;
+  --kw-gold: #B8973A;
+  --kw-gold-light: #D4AF5A;
+  --navy: #0C1A2E;
+  --navy-mid: #152645;
+  --slate: #1E3A5F;
+  --bg: #F8F7F4;
+  --bg-warm: #F2F0EB;
+  --white: #FFFFFF;
+  --text: #1A1A1A;
+  --text2: #444;
+  --text3: #777;
+  --border: #E2DDD6;
+  --green: #16A34A;
+  --amber: #D97706;
+  --purple: #7C3AED;
+  --r: 12px;
+  --rl: 20px;
+  --tr: all .3s cubic-bezier(.4,0,.2,1);
+  --sh: 0 2px 16px rgba(0,0,0,.07);
+  --sh2: 0 8px 40px rgba(0,0,0,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--kw-red),var(--kw-gold));z-index:9999;width:0;transition:width .1s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;background:rgba(12,26,46,.96);backdrop-filter:blur(16px);z-index:1000;padding:0 2rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:white;font-family:'Noto Serif KR',serif;font-weight:700;font-size:.95rem}
+.nav-mark{width:34px;height:34px;background:var(--kw-red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:white;flex-shrink:0}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.65);font-size:.82rem;font-weight:500;transition:var(--tr);position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--kw-gold-light);transform:scaleX(0);transition:var(--tr)}
+.nav-links a:hover{color:white}
+.nav-links a:hover::after{transform:scaleX(1)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.ham span{display:block;width:22px;height:2px;background:white;border-radius:2px;transition:var(--tr)}
+.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:var(--navy);padding:1.5rem 2rem;z-index:999;flex-direction:column;gap:1rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.mob-menu.open{display:flex}
+.mob-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.95rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(160deg,#060D1A 0%,#0C1A2E 45%,#1A0D14 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:62px}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.hero-particles::before{content:'';position:absolute;width:900px;height:900px;background:radial-gradient(ellipse,rgba(200,16,46,.18) 0%,transparent 65%);top:-200px;right:-200px;animation:pulse1 9s ease-in-out infinite}
+.hero-particles::after{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(ellipse,rgba(184,151,58,.12) 0%,transparent 65%);bottom:-100px;left:-50px;animation:pulse1 12s ease-in-out infinite reverse}
+@keyframes pulse1{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.08) rotate(5deg)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:80px 80px}
+.hero-content{max-width:1280px;margin:0 auto;padding:7rem 2rem 5rem;position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,.15);border:1px solid rgba(200,16,46,.35);color:#FCA5A5;padding:5px 14px;border-radius:100px;font-size:.75rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:.5px}
+.hero-badge-dot{width:6px;height:6px;background:#FCA5A5;border-radius:50%;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(2rem,4.5vw,3.4rem);color:white;line-height:1.25;margin-bottom:1.25rem}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--kw-gold-light),#F87171);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:2.5rem;max-width:560px}
+.hero-btns{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn-p{background:var(--kw-red);color:white;padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;border:2px solid var(--kw-red);transition:var(--tr);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-p:hover{background:var(--kw-red-dark);border-color:var(--kw-red-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,16,46,.4)}
+.btn-s{background:transparent;color:rgba(255,255,255,.8);padding:13px 26px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;border:2px solid rgba(255,255,255,.25);transition:var(--tr);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-s:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55);transform:translateY(-2px)}
+
+/* HERO CARD (right side) */
+.hero-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--rl);padding:2rem;backdrop-filter:blur(12px)}
+.hero-card-title{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--kw-gold-light);margin-bottom:1.25rem}
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.stat-row:last-child{border-bottom:none}
+.stat-row-label{font-size:.82rem;color:rgba(255,255,255,.6)}
+.stat-row-val{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;font-weight:700}
+.stat-row-val.red{color:#F87171}
+.stat-row-val.gold{color:var(--kw-gold-light)}
+.stat-row-val.green{color:#86EFAC}
+
+/* KR SPOTLIGHT STRIP */
+.kr-strip{background:linear-gradient(135deg,var(--kw-red-dark) 0%,#6B0D1E 100%);padding:3rem 2rem;position:relative;overflow:hidden}
+.kr-strip::before{content:'🇰🇷';position:absolute;right:3rem;top:50%;transform:translateY(-50%);font-size:8rem;opacity:.08}
+.kr-strip-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center}
+.kr-strip-headline{color:white}
+.kr-strip-headline h2{font-family:'Noto Serif KR',serif;font-size:1.6rem;margin-bottom:.5rem}
+.kr-strip-headline p{color:rgba(255,255,255,.7);font-size:.9rem}
+.kr-strip-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.kr-mini-stat{text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:1rem 1.5rem;min-width:130px}
+.kr-mini-stat .num{font-family:'Playfair Display',serif;font-size:2rem;color:white;line-height:1;font-weight:700}
+.kr-mini-stat .lbl{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.4}
+
+/* SECTION BASE */
+section{padding:5.5rem 2rem}
+.container{max-width:1280px;margin:0 auto}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--kw-red);margin-bottom:.875rem}
+.sec-label::before{content:'';display:block;width:20px;height:2px;background:var(--kw-red);border-radius:2px}
+h2.sec-title{font-family:'Noto Serif KR',serif;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.3;margin-bottom:1rem}
+.sec-desc{color:var(--text2);font-size:.9rem;max-width:640px;line-height:1.8;margin-bottom:3rem}
+
+/* TAKEAWAY TABS */
+.tab-bar{display:flex;gap:.625rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.tab-btn{padding:9px 18px;border-radius:100px;border:2px solid var(--border);background:white;color:var(--text2);font-family:'Noto Sans KR',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;transition:var(--tr)}
+.tab-btn:hover{border-color:var(--kw-red);color:var(--kw-red)}
+.tab-btn.active{background:var(--kw-red);border-color:var(--kw-red);color:white}
+.tab-pane{display:none}
+.tab-pane.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* TAKEAWAY CARDS */
+.takeaway-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.25rem}
+.tk-card{background:white;border-radius:var(--rl);padding:1.75rem;box-shadow:var(--sh);border:1px solid var(--border);transition:var(--tr);position:relative;overflow:hidden}
+.tk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--kw-red),var(--kw-gold))}
+.tk-card:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.tk-num{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--kw-red);opacity:.1;position:absolute;top:.75rem;right:1rem;line-height:1;font-weight:700}
+.tk-icon{font-size:1.6rem;margin-bottom:.875rem}
+.tk-card h3{font-family:'Noto Serif KR',serif;font-size:1.05rem;margin-bottom:.625rem;line-height:1.4}
+.tk-card p{font-size:.83rem;color:var(--text2);line-height:1.75}
+.tk-tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.7rem;font-weight:700;margin-top:.875rem}
+.tag-red{background:var(--kw-red-faint);color:var(--kw-red-dark)}
+.tag-blue{background:#EFF6FF;color:#1D4ED8}
+.tag-green{background:#F0FDF4;color:#15803D}
+.tag-amber{background:#FFFBEB;color:#B45309}
+.tag-purple{background:#F5F3FF;color:#6D28D9}
+.tag-navy{background:#EEF2FF;color:#3730A3}
+
+/* KOREA DEEP DIVE */
+.kr-section{background:linear-gradient(180deg,var(--navy) 0%,#0A1628 100%);color:white}
+.kr-section .sec-label{color:var(--kw-gold-light)}
+.kr-section .sec-label::before{background:var(--kw-gold-light)}
+.kr-section h2.sec-title{color:white}
+.kr-section .sec-desc{color:rgba(255,255,255,.65)}
+
+/* KR ACCORDION */
+.kr-accordion{display:flex;flex-direction:column;gap:.75rem;max-width:900px}
+.kr-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;transition:var(--tr)}
+.kr-item.open{background:rgba(255,255,255,.08);border-color:rgba(200,16,46,.4)}
+.kr-question{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 1.5rem;background:none;border:none;text-align:left;font-family:'Noto Sans KR',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;color:white;gap:1rem;transition:var(--tr)}
+.kr-item.open .kr-question{color:var(--kw-gold-light)}
+.kr-icon{width:28px;height:28px;flex-shrink:0;background:rgba(255,255,255,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.9rem;font-weight:700;transition:var(--tr)}
+.kr-item.open .kr-icon{background:var(--kw-red);color:white;transform:rotate(45deg)}
+.kr-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.kr-answer-body{padding:0 1.5rem 1.5rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem}
+.kr-answer-body p{font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.85;margin-bottom:.75rem}
+.kr-answer-body p:last-child{margin-bottom:0}
+.kr-answer-body strong{color:var(--kw-gold-light)}
+.kr-data-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(200,16,46,.2);border:1px solid rgba(200,16,46,.35);border-radius:8px;padding:6px 12px;font-size:.78rem;color:#FCA5A5;margin:.5rem .25rem 0 0}
+.kr-data-chip.gold{background:rgba(184,151,58,.2);border-color:rgba(184,151,58,.35);color:var(--kw-gold-light)}
+.kr-data-chip.green{background:rgba(22,163,74,.2);border-color:rgba(22,163,74,.35);color:#86EFAC}
+
+/* CHART BARS (CSS only) */
+.bar-chart{margin-top:1rem}
+.bar-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.6rem}
+.bar-label{font-size:.78rem;color:rgba(255,255,255,.65);width:120px;flex-shrink:0;text-align:right}
+.bar-track{flex:1;height:24px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:.72rem;font-weight:700;color:white;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.bar-val{font-size:.78rem;color:rgba(255,255,255,.7);width:50px;flex-shrink:0}
+
+/* COUNTER ANIMATION */
+.counter{display:inline-block}
+
+/* INTERACTIVE DATA EXPLORER */
+.explorer-section{background:var(--bg-warm)}
+.filter-group{display:flex;gap:.625rem;flex-wrap:wrap;margin-bottom:2rem}
+.filter-btn{padding:7px 16px;border-radius:100px;border:2px solid var(--border);background:white;color:var(--text2);font-family:'Noto Sans KR',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:var(--tr)}
+.filter-btn:hover{border-color:var(--navy);color:var(--navy)}
+.filter-btn.active{background:var(--navy);border-color:var(--navy);color:white}
+.data-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.125rem}
+.data-card{background:white;border-radius:var(--r);padding:1.5rem;box-shadow:var(--sh);border:1px solid var(--border);transition:var(--tr);cursor:default}
+.data-card[data-hidden="true"]{display:none}
+.data-card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.dc-cat{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.625rem}
+.dc-title{font-weight:700;font-size:.92rem;margin-bottom:.5rem;line-height:1.4}
+.dc-stat{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:.375rem}
+.dc-desc{font-size:.8rem;color:var(--text2);line-height:1.65}
+.dc-source{font-size:.7rem;color:var(--text3);margin-top:.75rem;border-top:1px solid var(--border);padding-top:.625rem}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem;max-width:800px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--kw-red),var(--kw-gold))}
+.tl-item{position:relative;margin-bottom:2rem;animation:fadeUp .5s ease both}
+.tl-dot{position:absolute;left:-1.625rem;top:.3rem;width:14px;height:14px;border-radius:50%;background:var(--kw-red);border:2px solid white;box-shadow:0 0 0 3px rgba(200,16,46,.2)}
+.tl-date{font-size:.72rem;font-weight:700;color:var(--kw-red);letter-spacing:1px;text-transform:uppercase;margin-bottom:.375rem}
+.tl-title{font-weight:700;font-size:.95rem;margin-bottom:.375rem}
+.tl-body{font-size:.83rem;color:var(--text2);line-height:1.7}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* CITATION */
+.cite-section{background:#060D1A;color:rgba(255,255,255,.8)}
+.cite-section .sec-label{color:var(--kw-gold-light)}
+.cite-section .sec-label::before{background:var(--kw-gold-light)}
+.cite-section h2{color:white}
+.cite-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--rl);padding:2.5rem;font-family:'Georgia',serif;font-size:.88rem;line-height:2;color:rgba(255,255,255,.78);position:relative;margin-bottom:1.25rem}
+.cite-box::before{content:'APA';position:absolute;top:-11px;left:18px;background:var(--kw-gold);color:white;padding:2px 10px;border-radius:100px;font-family:'Noto Sans KR',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1px}
+.copy-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.65);padding:9px 18px;border-radius:8px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-size:.82rem;transition:var(--tr);display:inline-flex;align-items:center;gap:7px}
+.copy-btn:hover{background:rgba(255,255,255,.14);color:white}
+.copy-btn.done{background:rgba(22,163,74,.2);border-color:rgba(22,163,74,.4);color:#86EFAC}
+
+/* BACK TO TOP */
+#btt{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--kw-red);color:white;border:none;border-radius:50%;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 4px 16px rgba(200,16,46,.45);transition:var(--tr);z-index:100}
+#btt:hover{background:var(--kw-red-dark);transform:translateY(-3px)}
+#btt.show{display:flex}
+
+footer{background:#03070F;color:rgba(255,255,255,.4);text-align:center;padding:2rem;font-size:.78rem}
+footer a{color:var(--kw-red-light);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .kr-strip-inner{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .ham{display:flex}
+  section{padding:4rem 1.25rem}
+  .hero-content{padding:5rem 1.25rem 4rem}
+  .kr-strip-stats{gap:1rem}
+  .tab-bar{gap:.5rem}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<button id="btt" aria-label="맨 위로">↑</button>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-mark">KW</div>
+      AI Index 2026 한국어 가이드
+    </a>
+    <ul class="nav-links">
+      <li><a href="#takeaways">주요 발견</a></li>
+      <li><a href="#korea">🇰🇷 한국 현황</a></li>
+      <li><a href="#explorer">데이터 탐색</a></li>
+      <li><a href="#timeline">2025 타임라인</a></li>
+      <li><a href="#citation">출처</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="#takeaways" onclick="closeMob()">주요 발견</a>
+  <a href="#korea" onclick="closeMob()">🇰🇷 한국 현황</a>
+  <a href="#explorer" onclick="closeMob()">데이터 탐색</a>
+  <a href="#timeline" onclick="closeMob()">2025 타임라인</a>
+  <a href="#citation" onclick="closeMob()">출처</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-particles"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge"><div class="hero-badge-dot"></div>Stanford HAI · 2026 AI Index Report</div>
+      <h1>AI는 정체가 아닌<br><em>가속 중</em>입니다</h1>
+      <p class="hero-sub">스탠퍼드 HAI의 AI Index 2026 보고서는 423페이지에 달하는 방대한 분석을 통해 AI의 기술·경제·정책·사회적 영향을 종합적으로 진단합니다. 연구자와 일반 대중을 위한 한국어 핵심 가이드입니다.</p>
+      <div class="hero-btns">
+        <a href="#korea" class="btn-p">🇰🇷 한국 현황 보기</a>
+        <a href="#takeaways" class="btn-s">15대 주요 발견 →</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">📊 2026 핵심 숫자</div>
+      <div class="stat-row"><span class="stat-row-label">기업 AI 도입률</span><span class="stat-row-val green">88%</span></div>
+      <div class="stat-row"><span class="stat-row-label">미국 민간 AI 투자</span><span class="stat-row-val gold">$285.9B</span></div>
+      <div class="stat-row"><span class="stat-row-label">AI 사고 건수</span><span class="stat-row-val red">362건</span></div>
+      <div class="stat-row"><span class="stat-row-label">한국 AI 특허 세계 1위</span><span class="stat-row-val">14.3%</span></div>
+      <div class="stat-row"><span class="stat-row-label">한국 AI 법안 (G20 2위)</span><span class="stat-row-val gold">17건</span></div>
+      <div class="stat-row"><span class="stat-row-label">생성 AI 도달 시간</span><span class="stat-row-val green">3년</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KOREA STRIP -->
+<div class="kr-strip">
+  <div class="kr-strip-inner">
+    <div class="kr-strip-headline">
+      <h2>🇰🇷 한국, AI 분야 글로벌 강자</h2>
+      <p>혁신 밀도 세계 1위 · G20 입법 2위 · 반도체 공급망 핵심국</p>
+    </div>
+    <div class="kr-strip-stats">
+      <div class="kr-mini-stat"><div class="num">#1</div><div class="lbl">1인당 AI 특허<br>세계 최고</div></div>
+      <div class="kr-mini-stat"><div class="num">17</div><div class="lbl">AI 관련 법안<br>G20 2위</div></div>
+      <div class="kr-mini-stat"><div class="num">5</div><div class="lbl">주목할 AI 모델<br>2025년 기준</div></div>
+      <div class="kr-mini-stat"><div class="num">+4.8%</div><div class="lbl">AI 도입 증가<br>G20 최대 상승</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAKEAWAYS -->
+<section id="takeaways">
+  <div class="container">
+    <span class="sec-label">15대 주요 발견</span>
+    <h2 class="sec-title">2026 AI Index가 말하는 것들</h2>
+    <p class="sec-desc">카테고리별로 탐색하세요. 각 카드는 보고서의 핵심 발견을 요약합니다.</p>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('all',this)">전체</button>
+      <button class="tab-btn" onclick="switchTab('tech',this)">🤖 기술·성능</button>
+      <button class="tab-btn" onclick="switchTab('econ',this)">💰 경제·투자</button>
+      <button class="tab-btn" onclick="switchTab('safe',this)">🛡️ 안전·책임</button>
+      <button class="tab-btn" onclick="switchTab('pol',this)">📜 정책·사회</button>
+    </div>
+
+    <div class="tab-pane active" id="tab-all">
+      <div class="takeaway-grid">
+
+        <div class="tk-card" data-cat="tech">
+          <div class="tk-num">01</div>
+          <div class="tk-icon">🚀</div>
+          <h3>AI 역량은 정체가 아닌 가속 중</h3>
+          <p>산업계가 2025년 주목할 프론티어 모델의 90% 이상을 생성했습니다. 일부 모델은 박사급 과학 문제, 멀티모달 추론, 수학 올림피아드에서 인간 기준치를 초과했습니다. 코딩 벤치마크(SWE-bench)에서는 1년 만에 60%→100%로 급등했습니다.</p>
+          <span class="tk-tag tag-red">기술 성능</span>
+        </div>
+
+        <div class="tk-card" data-cat="tech">
+          <div class="tk-num">02</div>
+          <div class="tk-icon">🇺🇸🇨🇳</div>
+          <h3>미중 AI 모델 격차 사실상 소멸</h3>
+          <p>2025년 초부터 미국·중국 모델이 여러 차례 선두를 교체했습니다. DeepSeek-R1이 잠시 미국 1위 모델과 대등했고, 2026년 3월 기준 Anthropic의 최고 모델이 2.7% 차이로 앞섭니다. 중국은 논문·특허 수량에서, 미국은 모델 품질·고영향 특허에서 우위를 유지합니다.</p>
+          <span class="tk-tag tag-blue">연구개발</span>
+        </div>
+
+        <div class="tk-card" data-cat="tech">
+          <div class="tk-num">04</div>
+          <div class="tk-icon">🧮</div>
+          <h3>금메달 수학 vs. 시계 못 읽는 AI</h3>
+          <p>Gemini Deep Think가 국제수학올림피아드(IMO)에서 금메달을 획득했으나, 최고 모델도 아날로그 시계를 정확히 읽는 비율은 50.1%에 불과합니다. AI 에이전트는 OSWorld에서 12%→66%로 성장했지만 여전히 3번 중 1번은 실패합니다.</p>
+          <span class="tk-tag tag-amber">기술 한계</span>
+        </div>
+
+        <div class="tk-card" data-cat="safe">
+          <div class="tk-num">06</div>
+          <div class="tk-icon">⚠️</div>
+          <h3>책임 AI는 역량 속도를 따라가지 못함</h3>
+          <p>대부분의 프론티어 AI 개발사가 역량 벤치마크 결과는 공개하지만 책임 AI 벤치마크 보고는 산발적입니다. 문서화된 AI 사고는 2024년 233건에서 362건으로 증가했습니다. 안전성을 높이면 정확도가 떨어지는 상충 관계도 확인됐습니다.</p>
+          <span class="tk-tag tag-red">안전·책임</span>
+        </div>
+
+        <div class="tk-card" data-cat="econ">
+          <div class="tk-num">07</div>
+          <div class="tk-icon">💸</div>
+          <h3>미국 AI 투자 1위, 그러나 인재 유치 감소</h3>
+          <p>미국 민간 AI 투자는 2025년 2,859억 달러로 중국(124억 달러)의 23배에 달합니다. 신규 AI 기업은 1,953개로 2위 국가의 10배 이상입니다. 그러나 미국으로 이동하는 AI 연구자·개발자 수는 2017년 대비 89%, 지난해 대비 80% 감소했습니다.</p>
+          <span class="tk-tag tag-amber">투자·경제</span>
+        </div>
+
+        <div class="tk-card" data-cat="econ">
+          <div class="tk-num">08</div>
+          <div class="tk-icon">📱</div>
+          <h3>생성 AI, PC·인터넷보다 빠른 확산</h3>
+          <p>생성 AI는 3년 만에 53% 인구 보급률을 달성했습니다. 국가별 편차가 크며 1인당 GDP와 강한 상관관계를 보입니다. 싱가포르(61%), UAE(54%)가 소득 대비 높은 보급률을 보이며 미국은 28.3%로 24위에 그쳤습니다.</p>
+          <span class="tk-tag tag-blue">사회 확산</span>
+        </div>
+
+        <div class="tk-card" data-cat="econ">
+          <div class="tk-num">09</div>
+          <div class="tk-icon">👩‍💻</div>
+          <h3>생산성 향상, 그러나 청년 개발자 고용 감소</h3>
+          <p>고객 지원·소프트웨어 개발 분야에서 14~26%의 생산성 향상이 확인됐습니다. 반면 미국의 22~25세 소프트웨어 개발자 고용은 2024년 대비 약 20% 감소했습니다.</p>
+          <span class="tk-tag tag-amber">노동시장</span>
+        </div>
+
+        <div class="tk-card" data-cat="safe">
+          <div class="tk-num">10</div>
+          <div class="tk-icon">🌍</div>
+          <h3>AI 환경 발자국 급증</h3>
+          <p>Grok 4의 훈련 추정 탄소 배출량은 72,816톤 CO₂ 상당입니다. AI 데이터센터 전력 용량은 29.6GW로 뉴욕주 최대 수요에 맞먹으며, GPT-4o의 연간 추론 물 사용량은 1,200만 명의 음용수 필요량을 초과할 수 있습니다.</p>
+          <span class="tk-tag tag-green">환경</span>
+        </div>
+
+        <div class="tk-card" data-cat="pol">
+          <div class="tk-num">11</div>
+          <div class="tk-icon">🔬</div>
+          <h3>AI, 인간 과학자를 능가하기 시작</h3>
+          <p>프론티어 모델이 ChemBench에서 평균적으로 인간 화학자를 능가했습니다. 단, 천체물리학 복제 연구에서는 20% 미만, 지구 관측 질문에서는 33% 미만의 성과를 보여 분야별 편차가 큽니다.</p>
+          <span class="tk-tag tag-purple">과학</span>
+        </div>
+
+        <div class="tk-card" data-cat="pol">
+          <div class="tk-num">13</div>
+          <div class="tk-icon">🎓</div>
+          <h3>AI 교육, 제도보다 현장이 앞서</h3>
+          <p>미국 고중대학생의 80% 이상이 AI를 학습에 활용하지만, 절반의 중고교만 AI 정책을 보유하고 있으며 6%의 교사만 그 정책이 명확하다고 답했습니다. 한국은 2025년 3월 초등학교에 AI 교과서를 도입했다가 학부모·교사 반발로 수개월 만에 철회했습니다.</p>
+          <span class="tk-tag tag-blue">교육</span>
+        </div>
+
+        <div class="tk-card" data-cat="pol">
+          <div class="tk-num">14</div>
+          <div class="tk-icon">🌐</div>
+          <h3>AI 주권이 국가 정책의 핵심 원칙으로</h3>
+          <p>특히 개발도상국을 중심으로 국가 AI 전략이 확대되고, AI 슈퍼컴퓨팅 투자도 증가하고 있습니다. 그러나 모델 생산은 여전히 미국·중국에 집중됩니다. 오픈소스 개발이 참여를 재분배하기 시작했으며, 나머지 세계의 GitHub 기여가 유럽을 넘어섰습니다.</p>
+          <span class="tk-tag tag-navy">정책</span>
+        </div>
+
+        <div class="tk-card" data-cat="pol">
+          <div class="tk-num">15</div>
+          <div class="tk-icon">🤔</div>
+          <h3>전문가·대중의 AI 인식 격차 심화</h3>
+          <p>AI의 미래에 대한 전문가와 일반 대중의 시각이 매우 다르며, AI를 관리할 기관에 대한 글로벌 신뢰도 분열됩니다. 2025년 글로벌 낙관론이 상승했지만 불안감도 함께 높아졌습니다.</p>
+          <span class="tk-tag tag-red">여론</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KOREA DEEP DIVE -->
+<section class="kr-section" id="korea">
+  <div class="container">
+    <span class="sec-label">🇰🇷 한국 심층 분석</span>
+    <h2 class="sec-title">한국, AI 지도에서 어디에 있나?</h2>
+    <p class="sec-desc">AI Index 2026이 한국에 대해 언급한 모든 내용을 6개 영역으로 정리했습니다. 항목을 클릭해 상세 내용을 확인하세요.</p>
+
+    <div class="kr-accordion">
+
+      <div class="kr-item">
+        <button class="kr-question" onclick="toggleKr(this)">
+          <span>📊 연구·개발 — 1인당 AI 특허 세계 1위</span>
+          <span class="kr-icon">+</span>
+        </button>
+        <div class="kr-answer">
+          <div class="kr-answer-body">
+            <p>2024년 기준 한국은 <strong>1인당 AI 특허 허가 건수 세계 최고</strong>를 기록했습니다(14.3%). 룩셈부르크(12.3%), 중국(7.0%)이 뒤를 이었습니다. AI Index는 한국을 "혁신 밀도(innovation density)의 선두"로 명시적으로 언급합니다.</p>
+            <p>AI 모델 생산에서는 2025년 <strong>5개의 주목할 모델</strong>을 발표해 미국(50개), 중국(30개)에 이어 3위를 기록했습니다.</p>
+            <p>한국의 AI 인재는 <strong>하드웨어·VLSI·IoT 분야 특화율 20%</strong>로 세계에서 가장 높습니다. 이는 반도체 공급망에서의 역할과 일치합니다. SK하이닉스와 삼성은 AI 학습에 필수적인 고대역폭 메모리(HBM)의 핵심 제조업체입니다.</p>
+            <div>
+              <span class="kr-data-chip gold">#1 1인당 AI 특허 (14.3%)</span>
+              <span class="kr-data-chip">주목할 모델 5개</span>
+              <span class="kr-data-chip green">HBM 제조 핵심국</span>
+            </div>
+            <div class="bar-chart" style="margin-top:1.25rem">
+              <div style="font-size:.72rem;color:rgba(255,255,255,.5);margin-bottom:.75rem">1인당 AI 특허 허가 비율 (2024)</div>
+              <div class="bar-row"><span class="bar-label">🇰🇷 한국</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--kw-red),var(--kw-gold))">14.3%</div></div></div>
+              <div class="bar-row"><span class="bar-label">🇱🇺 룩셈부르크</span><div class="bar-track"><div class="bar-fill" style="width:86%;background:#4B5563">12.3%</div></div></div>
+              <div class="bar-row"><span class="bar-label">🇨🇳 중국</span><div class="bar-track"><div class="bar-fill" style="width:49%;background:#4B5563">7.0%</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kr-item">
+        <button class="kr-question" onclick="toggleKr(this)">
+          <span>💰 경제·투자 — AI 도입 증가율 G20 최대</span>
+          <span class="kr-icon">+</span>
+        </button>
+        <div class="kr-answer">
+          <div class="kr-answer-body">
+            <p>2025년 상반기 대비 하반기, 한국의 AI 도입률은 <strong>4.8% 포인트 상승</strong>해 G20 국가 중 최대 상승폭을 기록하며 순위가 25위에서 18위로 올라섰습니다.</p>
+            <p>산업용 로봇 분야에서 한국은 2024년 <strong>30,600대 설치</strong>로 중국(295,000), 일본(44,500), 미국(34,200)에 이어 세계 4위를 기록했습니다.</p>
+            <p>AI 스타트업 생태계 지수에서 한국은 <strong>10.75점</strong>으로 싱가포르(9.09), 스웨덴(8.24) 등을 앞섰으며, 신규 AI 기업 수에서도 상위권을 유지하고 있습니다.</p>
+            <div>
+              <span class="kr-data-chip gold">+4.8%p G20 최대 도입 증가</span>
+              <span class="kr-data-chip">산업 로봇 4위 (30,600대)</span>
+              <span class="kr-data-chip green">스타트업 지수 10.75</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kr-item">
+        <button class="kr-question" onclick="toggleKr(this)">
+          <span>📜 정책·입법 — G20 입법 활동 미국 다음 2위</span>
+          <span class="kr-icon">+</span>
+        </button>
+        <div class="kr-answer">
+          <div class="kr-answer-body">
+            <p>2016~2025년 G20 국가 중 한국은 <strong>17개의 AI 관련 법안</strong>을 통과시켜 미국(25개)에 이어 2위를 기록했습니다. 프랑스(10개), 일본(10개), 이탈리아(9개)보다 크게 앞섭니다.</p>
+            <p>한국은 <strong>「인공지능 발전과 신뢰 기반 조성에 관한 기본법」</strong>을 제정해 AI 발전과 신뢰할 수 있는 윤리적 AI를 위한 정책·거버넌스 프레임워크를 수립했습니다. 국무총리가 이끄는 AI 전략 본부를 설치하고 AI 기본 계획을 의무화했습니다.</p>
+            <p>AI 안전 연구소(AISI) 설립 국가에도 포함됩니다. 또한 OpenAI의 Stargate 프로젝트와 Nvidia의 'AI Factory' 이니셔티브에 참여하는 <strong>AI 인프라 파트너국</strong>입니다.</p>
+            <div>
+              <span class="kr-data-chip gold">AI 법안 17개 (G20 2위)</span>
+              <span class="kr-data-chip">AI 기본법 제정</span>
+              <span class="kr-data-chip green">Stargate·Nvidia AI Factory 참여</span>
+            </div>
+            <div class="bar-chart" style="margin-top:1.25rem">
+              <div style="font-size:.72rem;color:rgba(255,255,255,.5);margin-bottom:.75rem">G20 AI 관련 법안 수 (2016–2025)</div>
+              <div class="bar-row"><span class="bar-label">🇺🇸 미국</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#1D4ED8,#3B82F6)">25개</div></div></div>
+              <div class="bar-row"><span class="bar-label">🇰🇷 한국</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:linear-gradient(90deg,var(--kw-red),var(--kw-gold))">17개</div></div></div>
+              <div class="bar-row"><span class="bar-label">🇫🇷 프랑스</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#4B5563">10개</div></div></div>
+              <div class="bar-row"><span class="bar-label">🇯🇵 일본</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:#4B5563">10개</div></div></div>
+              <div class="bar-row"><span class="bar-label">🇮🇹 이탈리아</span><div class="bar-track"><div class="bar-fill" style="width:36%;background:#4B5563">9개</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kr-item">
+        <button class="kr-question" onclick="toggleKr(this)">
+          <span>🎓 교육 — AI 교과서 도입·철회 논란</span>
+          <span class="kr-icon">+</span>
+        </button>
+        <div class="kr-answer">
+          <div class="kr-answer-body">
+            <p>한국은 <strong>2025년 3월 초등학교에 AI 교과서를 도입</strong>했습니다. 그러나 학부모와 교사의 반발로 인해 수개월 만에 철회하는 결정을 내렸습니다. 이는 AI 교육의 제도적 도입이 얼마나 복잡한 사회적 과정인지를 보여주는 사례로 보고서에 인용됩니다.</p>
+            <p>한국 상위 AI 저자·발명가의 학력 분포는 박사 42.5%, 석사 31.76%로 <strong>고학력 비율이 매우 높습니다</strong>. 그러나 AI 인재의 성별 불균형에서도 한국은 남성 81.44%, 여성 18.56%로 브라질·일본과 함께 불균형이 심한 국가로 꼽힙니다.</p>
+            <div>
+              <span class="kr-data-chip">AI 교과서 도입→철회 (2025.3)</span>
+              <span class="kr-data-chip gold">박사급 인재 비율 42.5%</span>
+              <span class="kr-data-chip" style="background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.35);color:#FCA5A5">여성 AI 인재 18.56% (낮음)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kr-item">
+        <button class="kr-question" onclick="toggleKr(this)">
+          <span>💬 여론 — AI가 일자리를 만든다고 믿는 나라</span>
+          <span class="kr-icon">+</span>
+        </button>
+        <div class="kr-answer">
+          <div class="kr-answer-body">
+            <p>한국 응답자의 <strong>70%가 AI가 일자리를 창출할 것</strong>이라고 응답해 나이지리아·일본·멕시코·UAE·인도와 함께 낙관론이 높은 나라에 속합니다. 미국·캐나다는 반대로 67~68%가 AI가 일자리를 없앤다고 응답했습니다.</p>
+            <p>AI가 과학·의학·기타 분야를 발전시킨다는 인식에서도 한국은 <strong>긍정적인 편</strong>에 속하며, AI 전반에 대한 신경질적 반응보다는 기회 중심 시각을 갖는 경향이 보고서에 나타납니다.</p>
+            <p>다만 조직 차원의 AI 리터러시·거버넌스 지원 수준은 일본·포르투갈과 함께 <strong>낮은 편</strong>으로 분류됩니다.</p>
+            <div>
+              <span class="kr-data-chip green">AI 일자리 창출 기대 70%</span>
+              <span class="kr-data-chip">AI 낙관론 상위권</span>
+              <span class="kr-data-chip" style="background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.35);color:#FCA5A5">조직 AI 거버넌스 지원 낮음</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kr-item">
+        <button class="kr-question" onclick="toggleKr(this)">
+          <span>🔧 반도체·인프라 — AI 하드웨어 공급망 핵심 국가</span>
+          <span class="kr-icon">+</span>
+        </button>
+        <div class="kr-answer">
+          <div class="kr-answer-body">
+            <p>AI 학습에 필수적인 고대역폭 메모리(HBM)의 선두 제조업체는 <strong>SK하이닉스(한국)</strong>와 <strong>삼성(한국)</strong>, 그리고 Micron(미국)입니다. 한국 기업들이 전 세계 AI 인프라의 메모리 공급망을 사실상 양분하고 있습니다.</p>
+            <p>보고서는 TSMC(대만)가 Nvidia Blackwell GPU, AMD MI300X 등 거의 모든 핵심 AI 칩을 생산하는 구조를 분석하면서, 한국의 SK하이닉스·삼성이 이 생산 공정에서 불가결한 역할을 수행한다고 강조합니다.</p>
+            <p>AI 인재의 전문 분야에서도 한국은 <strong>하드웨어·VLSI·IoT 인재 비율 20%로 세계 최고</strong>입니다. 이는 한국의 반도체 중심 산업 구조를 반영합니다.</p>
+            <div>
+              <span class="kr-data-chip gold">SK하이닉스·삼성 HBM 핵심 공급</span>
+              <span class="kr-data-chip green">하드웨어 AI 인재 비율 세계 최고</span>
+              <span class="kr-data-chip">글로벌 AI 공급망 핵심 링크</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DATA EXPLORER -->
+<section class="explorer-section" id="explorer">
+  <div class="container">
+    <span class="sec-label">데이터 탐색기</span>
+    <h2 class="sec-title">글로벌 AI 핵심 지표 한눈에</h2>
+    <p class="sec-desc">필터를 클릭해 원하는 분야의 데이터만 확인하세요.</p>
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="filterData('all',this)">전체</button>
+      <button class="filter-btn" onclick="filterData('research',this)">연구</button>
+      <button class="filter-btn" onclick="filterData('economy',this)">경제</button>
+      <button class="filter-btn" onclick="filterData('safety',this)">안전</button>
+      <button class="filter-btn" onclick="filterData('society',this)">사회</button>
+      <button class="filter-btn" onclick="filterData('korea',this)">🇰🇷 한국</button>
+    </div>
+    <div class="data-grid" id="dataGrid">
+
+      <div class="data-card" data-tags="research korea">
+        <div class="dc-cat" style="color:var(--kw-red)">🇰🇷 한국 · 연구</div>
+        <div class="dc-title">1인당 AI 특허 세계 1위</div>
+        <div class="dc-stat" style="color:var(--kw-red)">14.3%</div>
+        <div class="dc-desc">2024년 기준 한국의 1인당 AI 특허 허가 비율. 룩셈부르크(12.3%), 중국(7.0%)을 크게 앞섰습니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 1</div>
+      </div>
+
+      <div class="data-card" data-tags="research">
+        <div class="dc-cat" style="color:#1D4ED8">🤖 연구개발</div>
+        <div class="dc-title">미국 주목 AI 모델 수 (2025)</div>
+        <div class="dc-stat" style="color:#1D4ED8">50개</div>
+        <div class="dc-desc">미국이 50개, 중국 30개, 한국 5개. 산업계가 전체의 90% 이상 생성했습니다.</div>
+        <div class="dc-source">출처: Epoch AI, 2026</div>
+      </div>
+
+      <div class="data-card" data-tags="research">
+        <div class="dc-cat" style="color:#7C3AED">🔬 기술 성능</div>
+        <div class="dc-title">SWE-bench 코딩 성능 (1년 상승)</div>
+        <div class="dc-stat" style="color:#7C3AED">60→100%</div>
+        <div class="dc-desc">소프트웨어 엔지니어링 벤치마크에서 AI의 인간 기준치 달성률이 1년 만에 폭등했습니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 2</div>
+      </div>
+
+      <div class="data-card" data-tags="economy">
+        <div class="dc-cat" style="color:#D97706">💰 투자</div>
+        <div class="dc-title">미국 민간 AI 투자 (2025)</div>
+        <div class="dc-stat" style="color:#D97706">$285.9B</div>
+        <div class="dc-desc">중국($12.4B)의 23배. 전년 대비 127.5% 증가. 생성 AI가 전체 민간 투자의 거의 절반을 차지합니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 4</div>
+      </div>
+
+      <div class="data-card" data-tags="economy korea">
+        <div class="dc-cat" style="color:var(--kw-red)">🇰🇷 한국 · 경제</div>
+        <div class="dc-title">AI 도입 증가 (G20 최대)</div>
+        <div class="dc-stat" style="color:var(--kw-red)">+4.8%p</div>
+        <div class="dc-desc">2025년 하반기 한국의 AI 도입률 상승폭. G20 국가 중 가장 큰 상승폭으로 25위→18위로 도약했습니다.</div>
+        <div class="dc-source">출처: Microsoft AI Economy Institute, 2025</div>
+      </div>
+
+      <div class="data-card" data-tags="economy">
+        <div class="dc-cat" style="color:#16A34A">📈 소비자 가치</div>
+        <div class="dc-title">미국 생성 AI 소비자 잉여 (연간)</div>
+        <div class="dc-stat" style="color:#16A34A">$172B</div>
+        <div class="dc-desc">2026년 초 기준 연간 1,720억 달러. 1년 전($1,120억) 대비 54% 증가. 사용자 중위값은 3배 상승했습니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 4</div>
+      </div>
+
+      <div class="data-card" data-tags="safety">
+        <div class="dc-cat" style="color:#DC2626">⚠️ AI 안전</div>
+        <div class="dc-title">문서화된 AI 사고 건수 (2025)</div>
+        <div class="dc-stat" style="color:#DC2626">362건</div>
+        <div class="dc-desc">전년(233건) 대비 55% 증가. 안전성을 높이면 정확도가 하락하는 상충 관계도 확인됐습니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 3</div>
+      </div>
+
+      <div class="data-card" data-tags="safety">
+        <div class="dc-cat" style="color:#7C3AED">🌍 환경</div>
+        <div class="dc-title">Grok 4 훈련 탄소 배출 추정치</div>
+        <div class="dc-stat" style="color:#7C3AED">72,816t</div>
+        <div class="dc-desc">CO₂ 상당량 기준. AI 데이터센터 전력 용량은 29.6GW로 뉴욕주 최대 수요에 맞먹습니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 1·4</div>
+      </div>
+
+      <div class="data-card" data-tags="society">
+        <div class="dc-cat" style="color:#1D4ED8">👩‍🎓 교육</div>
+        <div class="dc-title">AI 사용 미국 대학생 비율</div>
+        <div class="dc-stat" style="color:#1D4ED8">80%+</div>
+        <div class="dc-desc">미국 고중대학생의 80% 이상이 AI를 학교 관련 과제에 활용합니다. 하지만 AI 정책이 있는 중고교는 절반에 불과합니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 7</div>
+      </div>
+
+      <div class="data-card" data-tags="society">
+        <div class="dc-cat" style="color:#D97706">👷 노동시장</div>
+        <div class="dc-title">미국 청년 개발자 고용 감소</div>
+        <div class="dc-stat" style="color:#D97706">-20%</div>
+        <div class="dc-desc">22~25세 소프트웨어 개발자 고용이 2024년 대비 약 20% 감소. 고연차 개발자 고용은 계속 증가 중입니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 4</div>
+      </div>
+
+      <div class="data-card" data-tags="society">
+        <div class="dc-cat" style="color:#16A34A">🌐 확산 속도</div>
+        <div class="dc-title">생성 AI 53% 도달 기간</div>
+        <div class="dc-stat" style="color:#16A34A">3년</div>
+        <div class="dc-desc">PC나 인터넷보다 빠른 역대 최속 기술 확산. 싱가포르 61%, UAE 54%, 미국 28.3%(24위)로 국가 간 편차가 큽니다.</div>
+        <div class="dc-source">출처: AI Index 2026, Chapter 4</div>
+      </div>
+
+      <div class="data-card" data-tags="research korea">
+        <div class="dc-cat" style="color:var(--kw-red)">🇰🇷 한국 · 인재</div>
+        <div class="dc-title">한국 여성 AI 인재 비율</div>
+        <div class="dc-stat" style="color:#EF4444">18.6%</div>
+        <div class="dc-desc">한국의 상위 AI 저자·발명가 중 여성 비율. 브라질·일본과 함께 성별 불균형이 심한 국가로 분류됩니다. 2010년 이후 개선 없음.</div>
+        <div class="dc-source">출처: Zeki Data, 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" style="background:white">
+  <div class="container">
+    <span class="sec-label">2025 AI 타임라인</span>
+    <h2 class="sec-title">한 해 동안 무슨 일이 있었나</h2>
+    <p class="sec-desc">2025년 AI 분야의 주요 사건들을 시간 순서로 정리했습니다.</p>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:#1D4ED8"></div>
+        <div class="tl-date">2025년 1월</div>
+        <div class="tl-title">⚡ Stargate 프로젝트 발표 ($500B)</div>
+        <div class="tl-body">OpenAI·SoftBank·Oracle·MGX가 2029년까지 최대 5,000억 달러를 AI 데이터센터에 투자하는 Stargate 프로젝트를 백악관에서 발표. <strong>한국도 파트너국으로 참여.</strong></div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:#DC2626"></div>
+        <div class="tl-date">2025년 1월 27일</div>
+        <div class="tl-title">🇨🇳 DeepSeek, 미국 앱스토어 1위</div>
+        <div class="tl-body">중국 DeepSeek-R1이 Apple 미국 앱스토어 무료 앱 1위에 오르며 미중 AI 격차에 충격을 줬습니다. 잠시 미국 최고 모델과 대등한 성능을 기록했습니다.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:#D97706"></div>
+        <div class="tl-date">2025년 3월</div>
+        <div class="tl-title">🇰🇷 한국, 초등 AI 교과서 도입</div>
+        <div class="tl-body">한국이 초등학교에 AI 교과서를 전국 도입했습니다. 그러나 학부모·교사의 반발로 수개월 만에 철회하며 AI 교육의 사회적 수용 과제를 부각시켰습니다.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:#16A34A"></div>
+        <div class="tl-date">2025년 중반</div>
+        <div class="tl-title">🏅 Gemini, 수학 올림피아드 금메달</div>
+        <div class="tl-body">Google의 Gemini Deep Think가 국제수학올림피아드(IMO)에서 금메달을 획득하며 AI의 복잡한 수학적 추론 능력을 입증했습니다.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:#7C3AED"></div>
+        <div class="tl-date">2025년</div>
+        <div class="tl-title">🤖 AI 에이전트, OSWorld 66% 달성</div>
+        <div class="tl-body">실제 컴퓨터 작업을 테스트하는 OSWorld에서 AI 에이전트의 성공률이 12%에서 66%로 급등했습니다. 그러나 여전히 3번 중 1번은 실패합니다.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:var(--kw-red)"></div>
+        <div class="tl-date">2025년 하반기</div>
+        <div class="tl-title">🇰🇷 한국 AI 도입률 G20 최대 상승</div>
+        <div class="tl-body">한국의 AI 도입률이 상반기 25.9%에서 하반기 30.7%로 4.8%p 상승해 G20 최대 상승폭을 기록, 글로벌 순위가 25위에서 18위로 도약했습니다.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot" style="background:#D97706"></div>
+        <div class="tl-date">2025년</div>
+        <div class="tl-title">🏥 임상 AI 노트 83% 시간 절감</div>
+        <div class="tl-body">여러 병원 시스템에서 의사들이 AI 자동 임상 노트 도구로 기록 시간을 최대 83% 절감하고 번아웃이 크게 감소했다고 보고했습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITATION -->
+<section class="cite-section" id="citation">
+  <div class="container">
+    <span class="sec-label">참고문헌</span>
+    <h2 class="sec-title" style="color:white">보고서 원문 정보</h2>
+    <div class="cite-box" id="citeText">
+      Maslej, N., Fattorini, L., Perrault, R., Gil, Y., Parli, V., Reif, E., Brynjolfsson, E., Etchemendy, J., Ligett, K., Lyons, T., Manyika, J., Niebles, J. C., Shoham, Y., Wald, R., & Clark, J. (2026). <em>Artificial Intelligence Index Report 2026.</em> Stanford University, Human-Centered Artificial Intelligence. https://aiindex.stanford.edu
+    </div>
+    <button class="copy-btn" id="cpBtn" onclick="copyCite()">📋 APA 인용 복사</button>
+    <div style="margin-top:2rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:1.75rem">
+      <p style="font-size:.75rem;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:.875rem">보고서 정보</p>
+      <p style="font-size:.87rem;color:rgba(255,255,255,.65);line-height:2">
+        📅 발행: 2026년 · 🏛️ 발행처: Stanford HAI (Human-Centered Artificial Intelligence)<br>
+        📖 총 페이지: 423페이지 · 📂 챕터: 9개 (연구개발·기술성능·책임AI·경제·과학·의학·교육·정책·여론)<br>
+        🌐 웹사이트: <a href="https://aiindex.stanford.edu" target="_blank" rel="noopener" style="color:var(--kw-gold-light)">aiindex.stanford.edu</a><br>
+        ✅ 오픈 액세스: 무료 공개 보고서 · 매년 발행
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>이 페이지는 Stanford HAI AI Index Report 2026을 기반으로 교육 목적으로 제작되었습니다. &nbsp;|&nbsp; <a href="https://donghunc.kr/blog/" target="_blank">donghunc.kr/blog</a> &nbsp;|&nbsp; 광운대학교</p>
+</footer>
+
+<script>
+// PROGRESS + BACK TO TOP
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('btt').classList.toggle('show',window.scrollY>400);
+});
+document.getElementById('btt').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+// HAMBURGER
+document.getElementById('ham').onclick=()=>document.getElementById('mob').classList.toggle('open');
+function closeMob(){document.getElementById('mob').classList.remove('open')}
+
+// REVEAL
+const obs=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*80)}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// TAKEAWAY TABS
+function switchTab(cat,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid=document.querySelector('#tab-all .takeaway-grid');
+  grid.querySelectorAll('.tk-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';
+  });
+}
+
+// KOREA ACCORDION
+function toggleKr(btn){
+  const item=btn.closest('.kr-item');
+  const ans=item.querySelector('.kr-answer');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.kr-item.open').forEach(i=>{
+    i.classList.remove('open');
+    i.querySelector('.kr-answer').style.maxHeight='0';
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    ans.style.maxHeight=ans.scrollHeight+'px';
+  }
+  // animate bars when opened
+  setTimeout(()=>{
+    item.querySelectorAll('.bar-fill').forEach(b=>{
+      const w=b.style.width;
+      b.style.width='0';
+      setTimeout(()=>b.style.width=w,50);
+    });
+  },50);
+}
+
+// DATA EXPLORER FILTER
+function filterData(tag,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.data-card').forEach(c=>{
+    const tags=c.dataset.tags||'';
+    c.setAttribute('data-hidden', tag!=='all'&&!tags.includes(tag)?'true':'false');
+  });
+}
+
+// COPY CITATION
+function copyCite(){
+  const txt="Maslej, N., Fattorini, L., Perrault, R., Gil, Y., Parli, V., Reif, E., Brynjolfsson, E., Etchemendy, J., Ligett, K., Lyons, T., Manyika, J., Niebles, J. C., Shoham, Y., Wald, R., & Clark, J. (2026). Artificial Intelligence Index Report 2026. Stanford University, Human-Centered Artificial Intelligence. https://aiindex.stanford.edu";
+  navigator.clipboard.writeText(txt).then(()=>{
+    const b=document.getElementById('cpBtn');
+    b.textContent='✅ 복사 완료!';
+    b.classList.add('done');
+    setTimeout(()=>{b.textContent='📋 APA 인용 복사';b.classList.remove('done')},2500);
+  });
+}
+</script>
+</body>
+</html>
